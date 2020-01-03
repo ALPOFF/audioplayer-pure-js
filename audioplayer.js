@@ -162,7 +162,6 @@ audioHudDuv.appendChild(upload);
 
 playerWrapper.className = "audio-container";
 playerWrapper.appendChild(audioHudDuv);
-document.body.appendChild(playerWrapper);
 
 let speedSelect = document.getElementById('audio-hud__speed');
 
@@ -250,6 +249,9 @@ audio.addEventListener('timeupdate', audioProgress);
 progressTrack.addEventListener('click', audioChangeTime);
 audioHudElement.addEventListener('click', audioAct);
 audio.addEventListener('click', audioAct);
+
+//adding player
+document.body.appendChild(playerWrapper);
 
 
 
