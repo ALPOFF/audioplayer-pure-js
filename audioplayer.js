@@ -1,5 +1,3 @@
-//html
-
 let style = document.createElement('style');
 style.type = 'text/css';
 style.innerHTML = `a {text-decoration: none} .audio-hud {display: flex; flex-direction: row} .audio-container { border: 1px solid #000; background: #ffffff; border-radius: 10px; width: 50%; color: #404040; display: flex; flex-direction: column; } .audio-player { width:100%; margin:0; } .video-hud {	margin: 0;	padding: 4px;	display: flex;	align-items: center;	justify-content: space-between; } .audio-hud__element { cursor:pointer; display:inline-block; vertical-align:middle; } .audio-hud__mute:hover ~ .audio-hud__volume {	display: block;} .audio-hud__volume:hover {	display: block; } .audio-hud__volume {	display: none; height: 100%; margin-top: 5px } .video-hud__mute_true { 		} .audio-hud__mute_false {	width: 20px;	transition-property: width } .audio-hud__mute_false:hover {	width: 160px } /* Special styling for WebKit/Blink */ input[type=range]::-webkit-slider-thumb {  -webkit-appearance: none;  border: 1px solid #000000;  border-radius: 40px;  height: 12px;  width: 12px;  background: black;  opacity: 0.9;  cursor: pointer;  margin-top: -4px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */ } /* All the same stuff for Firefox */ input[type=range]::-moz-range-thumb {  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;  border: 1px solid #000000;  height: 36px;  width: 16px;  border-radius: 3px;  background: #ffffff;  cursor: pointer; } /* All the same stuff for IE */ input[type=range]::-ms-thumb {  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;  border: 1px solid #000000;  height: 36px;  width: 16px;  border-radius: 3px;  background: #ffffff;  cursor: pointer; } input[type=range] {  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */  width: 100%; /* Specific width is required for Firefox. */  background: transparent; /* Otherwise white in Chrome */ } input[type=range]::-webkit-slider-thumb {  -webkit-appearance: none; } input[type="range"]::-moz-range-progress {  background-color: #43e5f7; } input[type=range]:focus {  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */ } input[type=range]::-ms-track {  width: 100%;  cursor: pointer;  /* Hides the slider so custom styles can be added */  background: transparent;   border-color: transparent;  color: transparent; } input[type=range]::-webkit-slider-runnable-track {  width: 100%;  height: 4px;  cursor: pointer;  background: lightgrey;  border-radius: 20px;  border: 0.2px solid #010101; } input[type=range]::-moz-range-track {  width: 100%;  height: 4px;  cursor: pointer;  background: lightgrey;  border-radius: 20px;  border: 0.2px solid #010101; } input[type=range]::-ms-track {  width: 100%;  height: 4px;  cursor: pointer;  background: transparent;  border-color: transparent;  border-width: 16px 0;  color: transparent; } input[type=range]::-ms-fill-lower {  background: #2a6495;  border: 0.2px solid #010101;  border-radius: 20px;  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; } input[type=range]:focus::-ms-fill-lower {  background: #3071a9; } input[type=range]::-ms-fill-upper {  background: #3071a9;  border: 0.2px solid #010101;  border-radius: 20px;  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; } input[type=range]:focus::-ms-fill-upper {  background: #367ebd; } progress[value] {  /* Reset the default appearance */  -webkit-appearance: none;   appearance: none; margin: 0 5px 0 5px;  width: 100%;  height: 4px; } progress[value]::-webkit-progress-bar {  background-color: #eee;  border-radius: 2px;  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; } progress[value]::-webkit-progress-value { background-color: black;    border-radius: 2px;     background-size: 35px 20px, 100% 100%, 100% 100%; } select {    -webkit-appearance: none;    -moz-appearance: none;    text-indent: 1px;    text-overflow: '';    border: none; } select:focus{    outline: none; }`;
@@ -113,7 +111,7 @@ audioHudDuv.appendChild(volumeWrapper);
 selectSpeed.title = "Скорость";
 selectSpeed.className = "audio-hud__element audio-hud__speed";
 selectSpeed.id = "audio-hud__speed";
-selectSpeed.style = "flex-basis: auto; margin: 0 0 3px 10px";
+selectSpeed.style = "flex-basis: auto; margin: 0 10px 3px 10px";
 selectOption50.value = "50";
 selectOption50.innerHTML = "0.5X";
 selectSpeed.appendChild(selectOption50);
@@ -139,7 +137,7 @@ selectSpeed.appendChild(selectOption250);
 audioHudDuv.appendChild(selectSpeed);
 
 download.className = "audio-hud__element";
-download.style = "flex-basis: auto; margin: 0 5px 0 0";
+download.style = "flex-basis: auto; margin: 0 5px 0 5px";
 download.title = "Скачать";
 download.target = "_blank";
 download.href = audio.src;
@@ -152,10 +150,9 @@ downloadImage.innerHTML = "cloud_download";
 download.appendChild(downloadImage);
 audioHudDuv.appendChild(download);
 
-upload.style = "flex-basis: auto; margin: 0 5px 0 0";
+upload.style = "flex-basis: auto; margin: 0 5px 0 5px";
 upload.title = "Загрузить";
 upload.className = "audio-hud__element";
-
 
 uploadImage.className = "material-icons";
 uploadImage.style = "color: black";
@@ -166,9 +163,7 @@ audioHudDuv.appendChild(upload);
 
 playerWrapper.className = "audio-container";
 playerWrapper.appendChild(audioHudDuv);
-
-document.body.appendChild(playerWrapper)
-
+document.body.appendChild(playerWrapper);
 
 let speedSelect = document.getElementById('audio-hud__speed');
 
@@ -198,113 +193,65 @@ const videoAct = () => {
 }
 
 
-audioHudElement.addEventListener('click', videoAct);
-
-audio.addEventListener('click', videoAct);
 
 
 const videoTime = (time) => {
-
     time = Math.floor(time);
 
     let minutes = Math.floor(time / 60);
-
     let seconds = Math.floor(time - minutes * 60);
-
     let minutesVal = minutes;
-
     let secondsVal = seconds;
 
     if (minutes < 10) {
-
         minutesVal = '0' + minutes;
-
     }
-
     if (seconds < 10) {
-
         secondsVal = '0' + seconds;
-
     }
-
     return minutesVal + ':' + secondsVal;
-
-}
+};
 
 const videoProgress = () => {
-
     progress = (Math.floor(audio.currentTime) / (Math.floor(audio.duration) / 100));
-
     progressTrack.value = progress;
-
     audioCurrTime.innerHTML = videoTime(audio.currentTime);
-
-}
+};
 
 const videoChangeTime = (e) => {
-
     let mouseX = Math.floor(e.pageX - progressTrack.offsetLeft);
-
     let progress = mouseX / (progressTrack.offsetWidth / 100);
-
     audio.currentTime = audio.duration * (progress / 100);
-
-}
-
-
-audio.addEventListener('timeupdate', videoProgress);
-
-
-progressTrack.addEventListener('click', videoChangeTime);
-
+};
 
 const audioChangeVolume = () => {
-
     let volume = inputVolume.value / 100;
-
     audio.volume = volume;
-
     if (audio.volume == 0) {
-
         imageVolumeUp.style.display = "none";
         imageVolumeOff.style.display = "inline";
-
-
     } else {
-
         imageVolumeUp.style.display = "inline";
         imageVolumeOff.style.display = "none";
-
     }
-
-}
+};
 
 const audioMute = () => {
-console.log(111)
     if (audio.volume == 0) {
-
         audio.volume = inputVolume.value / 100;
-
         imageVolumeUp.style.display = "inline";
         imageVolumeOff.style.display = "none";
 
     } else {
-
         audio.volume = 0;
-
         imageVolumeUp.style.display = "none";
         imageVolumeOff.style.display = "inline";
-
     }
-
 };
 
 const audioChangeSpeed = () => {
-
     let speed = speedSelect.value / 100;
-
     audio.playbackRate = speed;
-
 };
 
 const uploadAudio = () => {
@@ -312,13 +259,13 @@ const uploadAudio = () => {
 };
 
 volumeIcons.addEventListener('click', audioMute);
-
 inputVolume.addEventListener('change', audioChangeVolume);
-
 selectSpeed.addEventListener('change', audioChangeSpeed);
-
 upload.addEventListener('click', uploadAudio);
-
+audio.addEventListener('timeupdate', videoProgress);
+progressTrack.addEventListener('click', videoChangeTime);
+audioHudElement.addEventListener('click', videoAct);
+audio.addEventListener('click', videoAct);
 
 
 
